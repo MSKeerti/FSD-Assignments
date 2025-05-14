@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Feedback Page with Web Storage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eef1f5;
+            margin: 0;
+            padding: 20px;
+        }
+        article {
+            background-color: #ffffff;
+            padding: 20px;
+            max-width: 600px;
+            margin: auto;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        textarea {
+            resize: vertical;
+            height: 100px;
+        }
+        input[type="submit"] {
+            margin-top: 20px;
+            width: 100%;
+            padding: 10px;
+            background-color: #2b7a78;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        input[type="submit"]:hover {
+            background-color: #20504f;
+        }
+        aside {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #d3e0ea;
+            border-left: 4px solid #4682b4;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 6px;
+        }
+        #displayFeedback {
+            background-color: #f0f8ff;
+            padding: 15px;
+            margin-top: 20px;
+            border-left: 5px solid #007acc;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+
+    <article>
+        <h2>Feedback Form</h2>
+        <form id="feedbackForm">
+            <label for="username">Name:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="feedback">Your Feedback:</label>
+            <textarea id="feedback" name="feedback" required></textarea>
+
+            <input type="submit" value="Submit Feedback">
+        </form>
+
+        <div id="displayFeedback">
+            <h3>Stored Feedback:</h3>
+            <p><strong>Name:</strong> <span id="storedName">None</span></p>
+            <p><strong>Feedback:</strong> <span id="storedFeedback">None</span></p>
+        </div>
+    </article>
+
+    <aside>
+        <h3>What is Web Storage?</h3>
+        <p><strong>localStorage</strong> and <strong>sessionStorage</strong> are Web Storage APIs that allow websites to store data in the browser:</p>
+        <ul>
+            <li><strong>localStorage:</strong> Stores data with no expiration date — it stays even after the browser is closed.</li>
+            <li><strong>sessionStorage:</strong> Stores data for the duration of the page session. It is cleared when the tab or window is closed.</li>
+        </ul>
+        <p>Web Storage is commonly used to save user preferences, form inputs, or app data temporarily without needing a server.</p>
+    </aside>
+
+    <script>
+        const form = document.getElementById('feedbackForm');
+        const storedName = document.getElementById('storedName');
+        const storedFeedback = document.getElementById('storedFeedback');
+
+        // Load stored data on page load
+        window.onload = () => {
+            if (localStorage.getItem("name")) {
+                storedName.textContent = localStorage.getItem("name");
+            }
+            if (localStorage.getItem("feedback")) {
+                storedFeedback.textContent = localStorage.getItem("feedback");
+            }
+        };
+
+        // Handle form submission
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent page reload
+
+            const name = document.getElementById('username').value;
+            const feedback = document.getElementById('feedback').value;
+
+            // Store in localStorage
+            localStorage.setItem("name", name);
+            localStorage.setItem("feedback", feedback);
+
+            // Update display
+            storedName.textContent = name;
+            storedFeedback.textContent = feedback;
+
+            // Optional: Reset form
+            form.reset();
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+.box {
+    background-color: lightgray;     /* Light gray background */
+    padding: 20px;                   /* Padding inside the box */
+    border: 1px solid black;         /* Black border */
+  }
+  

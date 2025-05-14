@@ -1,0 +1,13 @@
+.card {
+  border: 1px solid #ccc;
+  padding: 16px;
+  max-width: 300px;
+  margin: 40px auto;
+  border-radius: 8px;
+  background-color: #fff;
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}

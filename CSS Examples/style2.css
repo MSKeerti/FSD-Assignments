@@ -1,0 +1,11 @@
+nav a {
+    text-decoration: none;       /* Removes underline */
+    color: darkblue;             /* Sets text color to dark blue */
+    margin-right: 15px;          /* Adds space between links (optional) */
+    font-size: 18px;             /* Optional: makes it a bit clearer */
+  }
+  
+  nav a:hover {
+    color: orange;               /* Changes color on hover */
+  }
+  
