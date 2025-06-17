@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Two Numbers</title>
+    <script>
+        function addTwoNumbers() {
+            let num1 = prompt("Enter the first number:");
+            let num2 = prompt("Enter the second number:");
+            num1 = parseFloat(num1);
+            num2 = parseFloat(num2);
+            if (isNaN(num1) || isNaN(num2)) {
+                alert("Invalid input. Please enter valid numbers.");
+            } else {
+                let sum = num1 + num2;
+                alert("The sum is: " + sum);
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Add Two Numbers</h1>
+    <button onclick="addTwoNumbers()">Click to Add Numbers</button>
+</body>
+</html>
